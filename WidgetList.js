@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import MyTasks from './MyTasks';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { Button, Alert, StyleSheet, View, Text, ScrollView } from 'react-native';
 import OrgCompletionRate from './OrgCompletionRate';
 import { getData } from './api';
 
@@ -31,6 +31,16 @@ export default class WidgetList extends Component {
             <ScrollView style={styles.list}>
                 <MyTasks data={this.state.my_tasks} />
                 <OrgCompletionRate data={this.state.org_completion_rate} />
+                <View>
+                    <Button
+                        onPress={() => {
+                            Alert.alert('You tapped the button!');
+                          }}
+                        title="Learn More"
+                        color="#841584"
+                        accessibilityLabel="Learn more about this purple button"
+                        />
+                </View>
             </ScrollView>
         );
     }
