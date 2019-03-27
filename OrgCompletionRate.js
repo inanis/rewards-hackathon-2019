@@ -67,6 +67,7 @@ export default class OrgCompletionRate extends Component {
                         </TouchableOpacity>
                         <Text style={styles.counterLabel}>OTHERS WORKING</Text>
                     </View>
+                    
                     <View style={styles.counter}>
                         <TouchableOpacity
                             onPress={() => {
