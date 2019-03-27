@@ -1,11 +1,13 @@
-import WidgetList from './WidgetList';
+import WidgetList from './WidgetList'; 
+import EmployeeDirectoryApp from './EmployeeDirectoryApp'
 import {
   createStackNavigator, createAppContainer,
 } from 'react-navigation';
+import EmployeeList from './EmployeeList';
 
 const AppNavigator = createStackNavigator({
   list: {
-    screen: WidgetList,
+    screen: EmployeeList,
     navigationOptions: () => ({
       title: 'Dashboard',
     })

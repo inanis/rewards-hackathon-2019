@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
+  "devToolsPort": 19003,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 3772,
-  "expoServerNgrokUrl": "https://pm-ie4.anonymous.rewards-hackathon-2019.exp.direct",
-  "packagerNgrokUrl": "https://packager.pm-ie4.anonymous.rewards-hackathon-2019.exp.direct",
-  "ngrokPid": 20864
+  "packagerPid": 18720,
+  "expoServerNgrokUrl": "https://i7-wgc.anonymous.rewards-hackathon-2019.exp.direct",
+  "packagerNgrokUrl": "https://packager.i7-wgc.anonymous.rewards-hackathon-2019.exp.direct",
+  "ngrokPid": 13136
 }
