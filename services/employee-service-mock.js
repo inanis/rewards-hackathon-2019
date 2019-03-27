@@ -1,13 +1,13 @@
 let employees = [
     {
         id: 1,
-        firstName: "Sapoth",
+        firstName: "Amy",
         lastName: "Taylor",
         title: "CEO",
         phone: "617-123-4567",
         mobilePhone: "617-987-6543",
         email: "amy@fakemail.com",
-        picture: "https://who/Photos/sapoth.jpg"
+        picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/amy_taylor.jpg"
     },
     {
         id: 2,

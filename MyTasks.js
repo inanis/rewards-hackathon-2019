@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 export default class MyTasks extends Component {
 
@@ -17,6 +18,22 @@ export default class MyTasks extends Component {
                 <View style={styles.counterContainer}>
                     <View style={styles.counter}>
                         <Text style={styles.counterText}>{submitted_to_me}</Text>
+                        <AnimatedCircularProgress
+                            size={30}
+                            width={3}
+                            fill={50}
+                            tintColor="#00e0ff"
+                            rotation={0}
+                            onAnimationComplete={() => console.log('onAnimationComplete')}
+                            backgroundColor="#3d5875">
+                            {
+                                (fill) => (
+                                    <Text>
+                                        {50}
+                                    </Text>
+                                )
+                            }
+                        </AnimatedCircularProgress>
                         <Text style={styles.counterLabel}>SUBMITTED BY ME</Text>
                     </View>
                     <View style={styles.counter}>

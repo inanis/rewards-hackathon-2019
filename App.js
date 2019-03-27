@@ -1,5 +1,4 @@
-import WidgetList from './WidgetList'; 
-import EmployeeDirectoryApp from './EmployeeDirectoryApp'
+import EmployeeDetails from './EmployeeDetails'
 import {
   createStackNavigator, createAppContainer,
 } from 'react-navigation';
@@ -9,7 +8,13 @@ const AppNavigator = createStackNavigator({
   list: {
     screen: EmployeeList,
     navigationOptions: () => ({
-      title: 'Dashboard',
+      title: 'Employees',
+    })
+  },
+  details: {
+    screen: EmployeeDetails,
+    navigationOptions: () => ({
+      title: 'Details',
     })
   }}, {
     initialRouteName: 'list'

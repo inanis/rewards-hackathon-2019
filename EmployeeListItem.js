@@ -3,13 +3,19 @@ import { View, Text, Image, TouchableHighlight, StyleSheet } from 'react-native'
 
 export default class EmployeeListItem extends Component {
 
-    showDetails() {
-        this.props.navigator.push({name: 'details', data: this.props.data});
+    showDetails = () => {
+        this.props.navigation.navigate({
+            routeName: 'details',
+            params: {
+                data: this.props.data
+            },
+            key: this.props.data.id
+        });
     }
 
     render() {
         return (
-            <TouchableHighlight onPress={this.showDetails.bind(this)} underlayColor={'#EEEEEE'}>
+            <TouchableHighlight onPress={this.showDetails} underlayColor={'#EEEEEE'}>
                 <View style={styles.container}>
                     <Image source={{uri: this.props.data.picture}} style={styles.picture} />
                     <View>

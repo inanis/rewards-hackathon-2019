@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
-import { View, ListView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, ListView, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import ActionBar from './ActionBar';
 import EmployeeListItem from './EmployeeListItem';
 import * as employeeService from './services/employee-service-mock';
+import StrengthsChart from './StrengthsChart';
 
 export default class EmployeeDetails extends Component {
 
     constructor(props) {
         super(props);
+
+        const data = props.navigation.getParam('data');
         this.state = {dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})};
-        employeeService.findById(this.props.data.id).then(employee => {
+        employeeService.findById(data.id).then(employee => {
             this.setState({
                 employee: employee,
                 dataSource: this.state.dataSource.cloneWithRows(employee.reports)
@@ -17,8 +20,14 @@ export default class EmployeeDetails extends Component {
         });
     }
 
-    openManager() {
-        this.props.navigator.push({name: 'details', data: this.state.employee.manager});
+    openManager = () => {
+        this.props.navigation.navigate({
+            routeName: 'details',
+            params: {
+                data: this.props.data
+            },
+            key: this.props.data.id
+        });
     }
 
     render() {
@@ -38,23 +47,24 @@ export default class EmployeeDetails extends Component {
                     <ListView style={styles.list}
                               dataSource={this.state.dataSource}
                               enableEmptySections={true}
-                              renderRow={(data) => <EmployeeListItem navigator={this.props.navigator} data={data} />}
+                              renderRow={(data) => <EmployeeListItem navigation={this.props.navigation} data={data} />}
                               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                     />;
             } else {
                 directReports = <View style={styles.emptyList}><Text style={styles.lightText}>No direct reports</Text></View>;
             }
             return (
-                <View style={styles.container}>
+                <ScrollView style={styles.container}>
                     <View style={styles.header}>
                         {manager}
                         <Image source={{uri: employee.picture}} style={styles.picture} />
                         <Text style={styles.bigText}>{employee.firstName} {employee.lastName}</Text>
                         <Text style={[styles.mediumText, styles.lightText]}>{employee.title}</Text>
                         <ActionBar mobilePhone={employee.mobilePhone} email={employee.email} />
+                        <StrengthsChart />
                     </View>
                     {directReports}
-                </View>
+                </ScrollView>
             );
         } else {
             return null;
@@ -64,7 +74,6 @@ export default class EmployeeDetails extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 60,
         backgroundColor: '#FFFFFF',
         flex: 1
     },

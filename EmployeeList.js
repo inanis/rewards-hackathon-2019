@@ -29,7 +29,7 @@ export default class EmployeeList extends Component {
             <ListView style={styles.container}
                       dataSource={this.state.dataSource}
                       enableEmptySections={true}
-                      renderRow={(data) => <EmployeeListItem navigator={this.props.navigator} data={data} />}
+                      renderRow={(data) => <EmployeeListItem navigation={this.props.navigation} data={data} />}
                       renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                       renderHeader={() => <SearchBar onChange={this.search.bind(this)} />}
             />
@@ -39,8 +39,7 @@ export default class EmployeeList extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#FFFFFF',
-        marginTop: 60
+        backgroundColor: '#FFFFFF'
     },
     separator: {
         height: StyleSheet.hairlineWidth,
